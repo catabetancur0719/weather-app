@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Poiret+One&family=Quicksand:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+    <title>Weather channel</title>
+  </head>
+  <body>
+    <div class="shadow">
+      <header>
+        <form class="searchForm">
+          <input
+            class="searchInput"
+            type="search"
+            placeholder="Search a city"
+          />
+          <input class="submitButton" type="submit" value="Search" />
+        </form>
+      </header>
+
+      <main>
+        <h1 class="titleCity"></h1>
+
+        <p class="currentTemp"></p>
+        <p class="dayInformation"></p>
+
+        <p class="minAndMaxTemp">Min 16° - Max 23°</p>
+
+        <div class="days">
+          <ul>
+            <li>
+              Thu 🌧️
+              <br />
+              16° - 23°
+            </li>
+            <li>
+              Fri 🌤️
+              <br />
+              16° - 23°
+            </li>
+            <li>
+              Sat 🌧️
+              <br />
+              16° - 23°
+            </li>
+            <li>
+              Sun ☀️
+              <br />
+              20° - 25°
+            </li>
+            <li>
+              Mon 🌤️
+              <br />
+              16° - 23°
+            </li>
+          </ul>
+        </div>
+      </main>
+
+      <footer>
+        <p class="devInfo">This project was coded by catabetancur0719</p>
+      </footer>
+      <script src="JavaScript/index.js"></script>
+    </div>
+  </body>
+</html>
