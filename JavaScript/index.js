@@ -1,10 +1,69 @@
-function handleSearchSubmit(event){
+function refreshWeather(response){
+  let cityElement = document.querySelector(".titleCity");
+  let tempElement = document.querySelector(".currentTemp");
+  let temperature = response.data.temperature.current;
+  let iconElement = document.querySelector("#icon")
+  let timeElement = document.querySelector(".time")
+  let descriptionElement = document.querySelector("#description");
+  let windElement = document.querySelector("#wind");
+  let humidutyElement = document.querySelector("#humidity");
+  let date = new Date(response.data.time * 1000);
+
+  
+
+  cityElement.innerHTML = response.data.city;
+  tempElement.innerHTML = Math.round(temperature);
+  iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-app-icon">`;
+  timeElement.innerHTML = formatDate(date)
+  descriptionElement.innerHTML = response.data.condition.description;
+  windElement.innerHTML = `${response.data.wind.speed} Km/h`;
+  humidutyElement.innerHTML = `${response.data.temperature.humidity} %`;
+  //console.log(response.data);
+}
+
+function formatDate(date){
+  
+  let hours= date.getHours()
+  let minutes = date.getMinutes()
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+
+
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  return `${day} ${hours}:${minutes}`
+
+}
+
+function searchCity(city) {
+  let apiKey = "fb3o96aeef26e064f124eb8cta459256";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(refreshWeather)
+}
+
+function handleSearchSubmit(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#search-form-input");
-  let cityElement = document.querySelector(".titleCity");
-  cityElement.innerHTML = searchInput.value
+
+  searchCity(searchInput.value);
 }
 
 let searchFormElement = document.querySelector(".searchForm");
 //console.log(searchFormElement);
-searchFormElement.addEventListener("submit", handleSearchSubmit)
+searchFormElement.addEventListener("submit", handleSearchSubmit);
+
+searchCity("Medellin") // call the city when the page is loaded so it will appear without search

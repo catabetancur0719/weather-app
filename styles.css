@@ -24,7 +24,7 @@ body {
 
 header,
 h1,
-p {
+p{
   display: flex;
   justify-content: center;
 }
@@ -58,7 +58,8 @@ p {
   font-size: 25px;
 }
 
-.minAndMaxTemp {
+.minAndMaxTemp,
+.weather-app-details { 
   text-align: center;
   font-size: 20px;
 }
