@@ -21,6 +21,7 @@
             class="searchInput"
             type="search"
             placeholder="Search a city"
+            id="search-form-input"
           />
           <input class="submitButton" type="submit" value="Search" />
         </form>
@@ -30,9 +31,12 @@
         <h1 class="titleCity"></h1>
 
         <p class="currentTemp"></p>
-        <p class="dayInformation"></p>
 
         <p class="minAndMaxTemp">Min 16° - Max 23°</p>
+        <p class="dayAndTimeInformation"></p>
+        <p class="humidityAndWind"></p>
+
+      
 
         <div class="days">
           <ul>
@@ -65,8 +69,20 @@
         </div>
       </main>
 
-      <footer>
-        <p class="devInfo">This project was coded by catabetancur0719</p>
+      <footer class="devInfo">
+        Code by
+        <a
+          href="https://github.com/catabetancur0719/weather-app"
+          target="_blank"
+          >Cata Betancur</a
+        >
+
+        and hosted on
+        <a
+          href="https://my-weather-app-vanilla-javascript.netlify.app/"
+          target="_blank"
+          >Netlify</a
+        >
       </footer>
       <script src="JavaScript/index.js"></script>
     </div>
