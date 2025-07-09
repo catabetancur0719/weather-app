@@ -19,6 +19,7 @@ function refreshWeather(response){
   windElement.innerHTML = `${response.data.wind.speed} Km/h`;
   humidutyElement.innerHTML = `${response.data.temperature.humidity} %`;
   //console.log(response.data);
+  getForecast(response.data.city);
 }
 
 function formatDate(date){
@@ -62,8 +63,51 @@ function handleSearchSubmit(event) {
   searchCity(searchInput.value);
 }
 
+function friendlyFormatDate(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[date.getDay()];
+}
+
+function getForecast(city){
+  let apiKey = "fb3o96aeef26e064f124eb8cta459256";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+axios.get(apiUrl).then(displayForecast)
+}
+
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#forecast"); 
+ //console.log(response.data)
+
+  let forecastHtml = '<ul class="forecast-list">';
+
+  response.data.daily.forEach(function (day, index) {
+
+    if (index < 5) {
+
+      forecastHtml += `
+      <li class="forecast-day">
+        <div class="forecast-date">${friendlyFormatDate(day.time)}</div>
+        <img src="${day.condition.icon_url}" class="forecast-icon" />
+        <div class="forecast-temperatures">
+          <span class="temp-max">${Math.round(
+            day.temperature.maximum
+          )}°</span> /
+          <span class="temp-min">${Math.round(day.temperature.minimum)}°</span>
+        </div>
+      </li>`;
+    
+    }
+  });
+
+  forecastHtml += "</ul>";
+  forecastElement.innerHTML = forecastHtml;
+}
+
+
 let searchFormElement = document.querySelector(".searchForm");
 //console.log(searchFormElement);
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
-searchCity("Medellin") // call the city when the page is loaded so it will appear without search
+searchCity("Medellin") ;// call the city when the page is loaded so it will appear without search
+

@@ -23,8 +23,7 @@ body {
 }
 
 header,
-h1,
-p{
+h1 {
   display: flex;
   justify-content: center;
 }
@@ -33,7 +32,7 @@ p{
   border: none;
   border-radius: 5px;
   background-color: #dcdae2;
-  padding:10px 30px;
+  padding: 10px 30px;
 }
 
 .submitButton {
@@ -50,21 +49,45 @@ p{
   background-color: mediumaquamarine;
 }
 
+/* 🔥 Temperatura e icono centrados */
+.weather-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.weather-app-icon {
+  width: 50px;
+  height: 50px;
+}
+
 .currentTemp {
   font-size: 30px;
+  margin: 0;
 }
 
-.dayInformation {
-  font-size: 25px;
-}
-
-.minAndMaxTemp,
-.weather-app-details { 
+/* 🔥 Detalles centrados debajo */
+.weather-app-details {
   text-align: center;
-  font-size: 20px;
+  font-size: 18px;
+  line-height: 1.6;
 }
 
-.days ul {
+/* 🔥 Día y hora en una línea */
+.day-time {
+  text-align: center;
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+.minAndMaxTemp {
+  font-size: 18px;
+}
+
+/* 🔥 Pronóstico de varios días */
+.weatherForecast ul {
   display: flex;
   justify-content: center;
   list-style: none;
@@ -73,7 +96,7 @@ p{
   margin: 0;
 }
 
-.days li {
+.weatherForecast li {
   border: solid 1px;
   border-radius: 5px;
   padding: 8px;
@@ -81,7 +104,7 @@ p{
   transition: background 0.3s;
 }
 
-.days li:hover {
+.weatherForecast li:hover {
   background-color: rgb(250, 220, 194);
 }
 
@@ -90,7 +113,7 @@ footer {
   text-align: left;
   padding: 10px 0;
   width: 100%;
-  text-align: left;
   font-size: 14px;
   color: #949494;
 }
+
